@@ -3,17 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfLocalization"
         mc:Ignorable="d"
-        Title="{DynamicResource AppTitle}" Height="480" Width="640">
+        Title="{DynamicResource AppTitle}" Height="480" Width="640" ResizeMode="NoResize">
     <Grid>
-        <TextBlock x:Name="TextBlock" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" FontWeight="Bold" Text="{DynamicResource HeaderTextBlock}"/>
+        <TextBlock x:Name="TextBlock" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" FontWeight="Bold" Text="{DynamicResource HeaderTextBlock}" Width="500"/>
         <Label x:Name="PlaneLabel" Content="{DynamicResource PlaneKindLabel}" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PlaneTextBox" HorizontalAlignment="Left" Height="23" Margin="361,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{DynamicResource PlaneKindHint}"/>
-        <Label x:Name="JetsLabel" Content="{DynamicResource FighterJetsLabel}" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="JetsTextBox" HorizontalAlignment="Left" Height="23" Margin="202,80,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="120"/>
-        <CheckBox x:Name="SuccessfulAttackCheckBox" Content="{DynamicResource SuccessfulAttackLabel}" HorizontalAlignment="Left" Margin="20,108,0,0" VerticalAlignment="Top"/>
-        <GroupBox x:Name="AdvancedQuestionsGroupBox" Header="{DynamicResource AdvancedQuestionsGroupBox}" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Height="238" Width="614">
+        <TextBox x:Name="PlaneTextBox" HorizontalAlignment="Left" Height="23" Margin="20,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{DynamicResource PlaneKindHint}"/>
+        <Label x:Name="JetsLabel" Content="{DynamicResource FighterJetsLabel}" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="JetsTextBox" HorizontalAlignment="Left" Height="23" Margin="202,106,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="SuccessfulAttackCheckBox" Content="{DynamicResource SuccessfulAttackLabel}" HorizontalAlignment="Left" Margin="20,134,0,0" VerticalAlignment="Top"/>
+        <GroupBox x:Name="AdvancedQuestionsGroupBox" Header="{DynamicResource AdvancedQuestionsGroupBox}" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Height="244" Width="614">
             <Grid>
                 <TextBlock x:Name="AircraftCarriersLabel" Text="{DynamicResource AircraftCarriersLabel}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="31" Width="265" TextWrapping="WrapWithOverflow"/>
                 <RadioButton x:Name="AircraftCarriersOption1" Content="{DynamicResource AircraftCarriersOption1}" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" />
@@ -25,12 +24,7 @@
                 <ListBox x:Name="BattleshipsListBox" HorizontalAlignment="Left" Margin="309,49,0,-1.8" VerticalAlignment="Top" Width="267" ItemsSource="{DynamicResource BattleshipsOptions}" SelectionMode="Multiple" Height="168" />
             </Grid>
         </GroupBox>
-        <Button x:Name="CheckButton" Content="{DynamicResource CheckButton}" HorizontalAlignment="Left" Margin="281,396,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
+        <Button x:Name="CheckButton" Content="{DynamicResource CheckButton}" HorizontalAlignment="Left" Margin="281,415,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
         <Button x:Name="LanguageButton" Content="{DynamicResource LangAbbr}" HorizontalAlignment="Left" Margin="584,8,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Width="40" Click="LanguageButton_Click"/>
-
-
-
-
-
     </Grid>
 </Window>
