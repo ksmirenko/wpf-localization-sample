@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="clr-namespace:System;assembly=mscorlib"
+                    xmlns:col="clr-namespace:System.Collections;assembly=mscorlib">
+    <v:String x:Key="AppTitle">WPF Localization Sample</v:String>
+    <v:String x:Key="HeaderTextBlock">Test on the Pacific Ocean theater of World War II</v:String>
+    
+    <v:String x:Key="PlaneKindLabel">What kind of plane is the best known at the Pacific war theatre?</v:String>
+    <v:String x:Key="PlaneKindHint">Tiger</v:String>
+    <v:String x:Key="FighterJetsLabel">How many fighter jets were there?</v:String>
+    <v:String x:Key="SuccessfulAttackLabel">Was the attack on Pearl Harbor successful for the Japanese?</v:String>
+    
+    <v:String x:Key="LanguageLabel">Language</v:String>
+    <v:String x:Key="LangAbbr">EN</v:String>
+
+    <v:String x:Key="AdvancedQuestionsGroupBox">Advanced Questions</v:String>
+    
+    <v:String x:Key="AircraftCarriersLabel">Which Japanese aircraft carriers took part in the attack?</v:String>
+    <v:String x:Key="AircraftCarriersOption1">Akagi, Kaga, Sōryū</v:String>
+    <v:String x:Key="AircraftCarriersOption2">Hiryū, Shōkaku, Zuikaku</v:String>
+    <v:String x:Key="AircraftCarriersOption3">all of listed above</v:String>
+
+    <v:String x:Key="CommanderLabel">Who was in command of the Northern Area Force of the Imperial Japanese Navy?</v:String>
+    <col:ArrayList x:Key="CommanderOptions">
+        <v:String>Hosogaya</v:String>
+        <v:String>Ono</v:String>
+        <v:String>Chapaev</v:String>
+    </col:ArrayList>
+    
+    <v:String x:Key="BattelshipsLabel">Which US Navy battelships sunk as a result of the attack on Pearl Harbor?</v:String>
+    <col:ArrayList x:Key="BattleshipsOptions">
+        <v:String>California</v:String>
+        <v:String>Maryland</v:String>
+        <v:String>Oklahoma</v:String>
+        <v:String>Tennessee</v:String>
+        <v:String>West Virginia</v:String>
+        <v:String>Arizona</v:String>
+        <v:String>Nevada</v:String>
+        <v:String>Pennsylvania</v:String>
+    </col:ArrayList>
+    
+    <v:String x:Key="CheckButton">Check</v:String>
+    <v:String x:Key="ResultMessageBoxTitle">Test Result</v:String>
+    <v:String x:Key="ResultMessageBoxContent">You don't know anything, you can't do anything. What are you doing in the army anyway?</v:String>
+
+</ResourceDictionary>
