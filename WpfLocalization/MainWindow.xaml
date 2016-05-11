@@ -24,7 +24,7 @@
                 <ListBox x:Name="BattleshipsListBox" HorizontalAlignment="Left" Margin="309,49,0,-1.8" VerticalAlignment="Top" Width="267" ItemsSource="{DynamicResource BattleshipsOptions}" SelectionMode="Multiple" Height="168" />
             </Grid>
         </GroupBox>
-        <Button x:Name="CheckButton" Content="{DynamicResource CheckButton}" HorizontalAlignment="Left" Margin="281,415,0,0" VerticalAlignment="Top" Width="75" FontSize="14"/>
+        <Button x:Name="CheckButton" Content="{DynamicResource CheckButton}" HorizontalAlignment="Left" Margin="281,415,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Click="CheckButton_Click"/>
         <Button x:Name="LanguageButton" Content="{DynamicResource LangAbbr}" HorizontalAlignment="Left" Margin="584,8,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Width="40" Click="LanguageButton_Click"/>
     </Grid>
 </Window>

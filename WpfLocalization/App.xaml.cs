@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 
 namespace WpfLocalization {
@@ -18,6 +19,7 @@ namespace WpfLocalization {
         }
 
         public static List<CultureInfo> SupportedCultures { get; } = new List<CultureInfo>();
+        public static object CultureChanging = 42;
 
         /// <summary>
         /// Application property that allows to view the current culture and change culture on-the-fly.
@@ -35,28 +37,37 @@ namespace WpfLocalization {
                         System.Threading.Thread.CurrentThread.CurrentUICulture))
                     return;
 
-                System.Threading.Thread.CurrentThread.CurrentUICulture = value;
+                // notify UI that culture change has started
+                CultureChangeCalled?.Invoke(Current, new EventArgs());
 
-                var newDict = new ResourceDictionary {
-                    Source = value.Name.Equals(NeutralCulture)
-                        ? new Uri("Resources/Strings.xaml", UriKind.Relative)
-                        : new Uri($"Resources/Strings.{value.Name}.xaml",
-                            UriKind.Relative)
-                };
+                lock (CultureChanging) {
+                    System.Threading.Thread.CurrentThread.CurrentUICulture =
+                        value;
 
-                // replace the old ResourceDictionary with the new one
-                var oldDict =
-                    Current.Resources.MergedDictionaries.FirstOrDefault(
-                        x =>
-                            x.Source != null &&
-                            x.Source.OriginalString.StartsWith("Resources/lang."));
-                if (oldDict != null) {
-                    var dictIndex = Current.Resources.MergedDictionaries.IndexOf(oldDict);
-                    Current.Resources.MergedDictionaries.Remove(oldDict);
-                    Current.Resources.MergedDictionaries.Insert(dictIndex, newDict);
-                }
-                else {
-                    Current.Resources.MergedDictionaries.Add(newDict);
+                    var newDict = new ResourceDictionary {
+                        Source = value.Name.Equals(NeutralCulture)
+                            ? new Uri("Resources/Strings.xaml", UriKind.Relative)
+                            : new Uri($"Resources/Strings.{value.Name}.xaml",
+                                UriKind.Relative)
+                    };
+
+                    // replace the old ResourceDictionary with the new one
+                    var oldDict =
+                        Current.Resources.MergedDictionaries.FirstOrDefault(
+                            x =>
+                                x.Source != null &&
+                                x.Source.OriginalString.StartsWith(
+                                    "Resources/lang."));
+                    if (oldDict != null) {
+                        var dictIndex =
+                            Current.Resources.MergedDictionaries.IndexOf(oldDict);
+                        Current.Resources.MergedDictionaries.Remove(oldDict);
+                        Current.Resources.MergedDictionaries.Insert(dictIndex,
+                            newDict);
+                    }
+                    else {
+                        Current.Resources.MergedDictionaries.Add(newDict);
+                    }
                 }
 
                 // notify UI that culture has changed
@@ -75,7 +86,14 @@ namespace WpfLocalization {
         }
 
         /// <summary>
-        /// Event for notifying UI that culture has changed
+        /// Event for notifying UI that culture change has started.
+        /// The UI will possibly be saving its state (selected controls etc.) here.
+        /// WARNING: this event is required to be handled by the UI, calling "Monitor.Pulse(App.CultureChanging)"
+        /// due to a workaround in App.
+        /// </summary>
+        public static event EventHandler CultureChangeCalled;
+        /// <summary>
+        /// Event for notifying UI that culture has changed. The UI will possibly be restoring its state here.
         /// </summary>
         public static event EventHandler CultureChanged;
     }
